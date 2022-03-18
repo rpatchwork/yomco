@@ -1,0 +1,28 @@
+{
+    "orders": [
+        {
+            "customerName": "Amy Jones",
+            "orderNumber": "172346",
+            "orderSpecs": {
+                "muffin": "Whole Wheat",
+                "filling": "Raspberry",
+                "fillingAmount": 5.1,
+                "frosting": "Vanilla",
+                "frostingAmount": 15.6,
+                "topping": ""
+            }
+        },
+        {
+            "customerName": "Jimmy Judd",
+            "orderNumber": "8349143",
+            "orderSpecs": {
+                "muffin": "Lemon Poppy Seed",
+                "filling": "Vanilla",
+                "fillingAmount": 4.5,
+                "frosting": "Lemon",
+                "frostingAmount": 20.2,
+                "topping": ""
+            }
+        }
+    ]
+}
