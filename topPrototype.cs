@@ -20,12 +20,17 @@ namespace topic.Function
                 ServiceBusReceivedMessage  messageIncoming,
                 ILogger log)
         {
-            log.LogInformation($"{Environment.NewLine}***{Environment.NewLine}Generic Operator for message : {messageIncoming.MessageId}");
+           
             string custProp = string.Join(Environment.NewLine,messageIncoming.ApplicationProperties);
             var frostyVar = messageIncoming.ApplicationProperties["frosted"];
-            //log.LogInformation($"{Environment.NewLine}Custom Message Properties : {messageIncoming.ApplicationProperties.ToString()}");
+            JsonNode messageJson = JsonNode.Parse(messageIncoming.Body.ToString());
+            decimal frostingAmount = Convert.ToDecimal(messageJson["orderSpecs"]["frostingAmount"]);
+
+            log.LogInformation($"{Environment.NewLine}***{Environment.NewLine}Generic Operator for message : {messageIncoming.MessageId}");
+            log.LogInformation($"{Environment.NewLine}JSON Object in MessageBody: {messageJson}");
             log.LogInformation($"{Environment.NewLine}C# ServiceBus topic trigger function processed message: {messageIncoming.Body}");
-            log.LogInformation($"{Environment.NewLine}Frosty Status: {frostyVar}");
+            log.LogInformation($"{Environment.NewLine}Frosting Status: {frostyVar}");
+            log.LogInformation($"{Environment.NewLine}Frosting Amount: {frostingAmount}");
             log.LogInformation($"{Environment.NewLine}Message Properties: {custProp}");
         }
     }
