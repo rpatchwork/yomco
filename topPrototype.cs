@@ -20,7 +20,7 @@ namespace topic.Function
                 ServiceBusReceivedMessage  messageIncoming,
                 ILogger log)
         {
-            //Pull custom metadata from the message
+            //Pull custom metadata from the message 
             string custProp = string.Join(Environment.NewLine,messageIncoming.ApplicationProperties);
             //Inspect singular custom property
             string frostyVar = (string)messageIncoming.ApplicationProperties["frosted"];
