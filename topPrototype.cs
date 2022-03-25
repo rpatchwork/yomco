@@ -15,7 +15,8 @@ namespace topic.Function
          public static void Run(
             [ServiceBusTrigger(
                 "ttop1", 
-                "tTop1Sub1")]
+                "tTop1Sub1",
+                Connection = "cupcakes_SERVICEBUS")]
                 ServiceBusReceivedMessage  messageIncoming,
                 ILogger log)
         {
