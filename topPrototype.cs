@@ -41,13 +41,7 @@ namespace topic.Function
 
             //Job's done - now put the cupcake back in the hopper
 
-            ServiceBusMessage messageOutgoing = new ServiceBusMessage(messageIncoming);
-            messageOutgoing.MessageId = messageIncoming.MessageId;
-            messageOutgoing.Body = new BinaryData(jobTest);
-            messageOutgoing.ApplicationProperties["frosted"] = "2";
-            ServiceBusClient sbClient = new ServiceBusClient(Environment.GetEnvironmentVariable("cupcakes_SERVICEBUS"));
-            ServiceBusSender sbSender = sbClient.CreateSender("ttop1");
-            sbSender.SendMessageAsync(messageOutgoing);
+
 
 
             
@@ -59,6 +53,16 @@ namespace topic.Function
             log.LogInformation($"{Environment.NewLine}Frosting Amount: {frostingRequest}");
             log.LogInformation($"{Environment.NewLine}Message Properties: {custProp}");
             log.LogInformation($"{Environment.NewLine}Modified Message: {jobTest}");
+
+
+            ServiceBusMessage messageOutgoing = new ServiceBusMessage(messageIncoming);
+            messageOutgoing.MessageId = messageIncoming.MessageId;
+            messageOutgoing.Body = new BinaryData(jobTest);
+            messageOutgoing.ApplicationProperties["frosted"] = "2";
+            ServiceBusClient sbClient = new ServiceBusClient(Environment.GetEnvironmentVariable("cupcakes_SERVICEBUS"));
+            ServiceBusSender sbSender = sbClient.CreateSender("ttop1");
+            sbSender.SendMessageAsync(messageOutgoing);
+
         }
         public static float frostingCannon(float frostingSpec)
         {
