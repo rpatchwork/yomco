@@ -27,7 +27,7 @@ namespace topic.Function
             
             //Convert body from Byte to String and parse string to JSON Node
             JsonNode messageJson = JsonNode.Parse(messageIncoming.Body.ToString());
-
+            
             //Example of using path to interact with value in JSON Node
             float frostingRequest = ((float)messageJson["LegacyOrder"]["orderSpecs"]["frostingAmount"]);
             
